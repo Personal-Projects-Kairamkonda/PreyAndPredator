@@ -8,7 +8,7 @@ public class Radius : MonoBehaviour
     private LineRenderer circleRenderer;
 
     [Range(1, 5)]
-    public float triggerRadius = 2f;
+    public float triggerRadius = 4f;
 
     void Awake()
     {

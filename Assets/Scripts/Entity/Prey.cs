@@ -12,31 +12,37 @@ public class Prey : MonoBehaviour
     }
     void Start()
     {
-        preyMovement.speed = 3f;
+        preyMovement.speed = 4f;
 
+        /*
         SphereCollider trigger = gameObject.AddComponent<SphereCollider>();
         trigger.radius = 3f;
         trigger.isTrigger = true;
+        */
     }
 
     #region Unity Methods
 
     void OnTriggerEnter(Collider other)
     {
+        /*
         if (other.gameObject.GetComponent<Predator>())
         {
             //move away
             preyMovement.targetPosition = preyMovement.getRandomPosition();
             preyMovement.speed = 7f;
         }
+        */
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        /*
         if(collision.gameObject.GetComponent<Predator>())
         {
             ResetPosition();
         }
+        */
     }
 
     #endregion Unity Methods

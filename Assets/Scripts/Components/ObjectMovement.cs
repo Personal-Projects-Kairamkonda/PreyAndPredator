@@ -31,7 +31,7 @@ public class ObjectMovement : MonoBehaviour
 
 
     //Move method
-    void Move(Vector3 targetPosition)
+    public void Move(Vector3 targetPosition)
     {
         //Create a new target position so the animal doesn't move on the y axis
         Vector3 target = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);

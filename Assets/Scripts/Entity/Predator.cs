@@ -9,6 +9,7 @@ public class Predator : MonoBehaviour
     void Awake()
     {
         predatorMovement = this.GetComponent<ObjectMovement>();
+
         SphereCollider triggerCollider = gameObject.AddComponent<SphereCollider>();
         triggerCollider.radius = this.GetComponent<Radius>().triggerRadius;
         triggerCollider.isTrigger = true;
@@ -17,19 +18,41 @@ public class Predator : MonoBehaviour
     void Start()
     {
         predatorMovement.speed = 3f;
-
-        SphereCollider trigger = gameObject.AddComponent<SphereCollider>();
-        trigger.radius = 2f;
-        trigger.isTrigger = true;
     }
 
-   void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if(other.gameObject.GetComponent<Prey>())
+        Prey prey = other.GetComponent<Prey>();
+        Predator predator = other.GetComponent<Predator>();
+
+        if (prey)
         {
-            Debug.Log(other.gameObject.name);
+            //predatorMovement.targetPosition = other.transform.position;
+            predatorMovement.Move(other.transform.position);
+        }
+
+        /* This logic makes the predator messy with position when both are in the same trigger.
+        if(predator)
+        {
+            predatorMovement.targetPosition = predatorMovement.getRandomPosition();
+            predatorMovement.Move(predatorMovement.targetPosition);
+        }
+        */
+
+    }
+
+    
+    void OnCollisionEnter(Collision collision)
+    {
+        Prey prey = collision.gameObject.GetComponent<Prey>();
+
+        if (prey)
+        {
+            prey.ResetPosition();
         }
     }
+
+    
 
     void Evolve(float size,int speed)
     {

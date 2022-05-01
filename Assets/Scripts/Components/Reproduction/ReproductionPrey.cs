@@ -11,7 +11,7 @@ public class ReproductionPrey : Reproduction
     void Awake()
     {
         childtransform = this.transform;
-        childCount = 5;
+        childCount = 3;
     }
 
     // Start is called before the first frame update
