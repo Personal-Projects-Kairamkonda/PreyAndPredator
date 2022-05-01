@@ -9,7 +9,11 @@ public class Predator : MonoBehaviour
     void Awake()
     {
         predatorMovement = this.GetComponent<ObjectMovement>();
+        SphereCollider triggerCollider = gameObject.AddComponent<SphereCollider>();
+        triggerCollider.radius = this.GetComponent<Radius>().triggerRadius;
+        triggerCollider.isTrigger = true;
     }
+
     void Start()
     {
         predatorMovement.speed = 3f;
@@ -21,11 +25,10 @@ public class Predator : MonoBehaviour
 
    void OnTriggerStay(Collider other)
     {
-       if (other.GetComponent<Prey>())
-       {
-            predatorMovement.targetPosition = other.transform.position;
-            Evolve(1.3f, 1);
-       }
+        if(other.gameObject.GetComponent<Prey>())
+        {
+            Debug.Log(other.gameObject.name);
+        }
     }
 
     void Evolve(float size,int speed)

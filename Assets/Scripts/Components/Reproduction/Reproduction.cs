@@ -34,7 +34,7 @@ public class Reproduction : MonoBehaviour
         {
             GameObject temp = Instantiate(prefab, transform.position, transform.rotation);
             temp.transform.SetParent(this.transform);
-            temp.gameObject.name = index++.ToString();
+            temp.gameObject.name = prefab.name+"("+index++.ToString()+ ")";
 
            ObjectMovement tempObjectMovement=temp.GetComponent<ObjectMovement>();
 

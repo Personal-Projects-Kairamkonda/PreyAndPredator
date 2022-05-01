@@ -7,13 +7,23 @@ public class Radius : MonoBehaviour
 {
     private LineRenderer circleRenderer;
 
+    [Range(1, 5)]
+    public float triggerRadius = 2f;
+
+    void Awake()
+    {
+        circleRenderer = this.GetComponent<LineRenderer>();
+        circleRenderer.useWorldSpace = false;
+        circleRenderer.widthMultiplier = 0.2f;
+        circleRenderer.material.color = Color.black;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        circleRenderer = this.GetComponent<LineRenderer>();
-        circleRenderer.material.color = Color.black;
-        DrawCircle(130, 2);
+        DrawCircle(130, triggerRadius);
     }
+
     private void DrawCircle(int steps, float radius)
     {
         circleRenderer.positionCount = steps;
@@ -31,7 +41,7 @@ public class Radius : MonoBehaviour
             float x = xScaled * radius;
             float y = yScaled * radius;
 
-            Vector3 currentPosition = new Vector3(x, 0, y);
+            Vector3 currentPosition = new Vector3(x, -0.5f, y);
 
             circleRenderer.SetPosition(currentStep, currentPosition);
         }
