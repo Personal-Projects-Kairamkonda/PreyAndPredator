@@ -4,20 +4,22 @@ using UnityEngine;
 
 public class Predator : MonoBehaviour
 {
-    private ObjectMovement predatorMovement;
+    private ObjectMovement predMovement;
+    private Radius predRadius;
 
     void Awake()
     {
-        predatorMovement = this.GetComponent<ObjectMovement>();
+        predMovement = this.GetComponent<ObjectMovement>();
+        predRadius = this.GetComponent<Radius>();
 
         SphereCollider triggerCollider = gameObject.AddComponent<SphereCollider>();
-        triggerCollider.radius = this.GetComponent<Radius>().triggerRadius;
+        triggerCollider.radius = predRadius.triggerRadius;
         triggerCollider.isTrigger = true;
     }
 
     void Start()
     {
-        predatorMovement.speed = 3f;
+        predMovement.speed = 3f;
     }
 
     void OnTriggerStay(Collider other)
@@ -27,8 +29,14 @@ public class Predator : MonoBehaviour
 
         if (prey)
         {
-            //predatorMovement.targetPosition = other.transform.position;
-            predatorMovement.Move(other.transform.position);
+            //predMovement.speed = predMovement.speed / 2;
+            predMovement.Move(other.transform.position);
+            predRadius.circleRenderer.material.color = Color.red;
+        }
+        else
+        {
+            predRadius.circleRenderer.material.color = Color.black;
+            predMovement.speed = 3f;
         }
 
         /* This logic makes the predator messy with position when both are in the same trigger.
@@ -38,7 +46,6 @@ public class Predator : MonoBehaviour
             predatorMovement.Move(predatorMovement.targetPosition);
         }
         */
-
     }
 
     
@@ -57,6 +64,6 @@ public class Predator : MonoBehaviour
     void Evolve(float size,int speed)
     {
         transform.localScale = new Vector3(size, transform.localScale.y, size);
-        predatorMovement.speed = speed;
+        predMovement.speed = speed;
     }
 }

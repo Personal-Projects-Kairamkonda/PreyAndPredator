@@ -5,6 +5,7 @@ using UnityEngine;
 public class Prey : MonoBehaviour
 {
     private ObjectMovement preyMovement;
+    private Radius preyRadius;
 
     void Awake()
     {
@@ -13,36 +14,30 @@ public class Prey : MonoBehaviour
     void Start()
     {
         preyMovement.speed = 4f;
-
-        /*
-        SphereCollider trigger = gameObject.AddComponent<SphereCollider>();
-        trigger.radius = 3f;
-        trigger.isTrigger = true;
-        */
     }
 
     #region Unity Methods
 
     void OnTriggerEnter(Collider other)
     {
-        /*
-        if (other.gameObject.GetComponent<Predator>())
+        Predator predator = other.GetComponent<Predator>();
+
+        if (predator)
         {
-            //move away
-            preyMovement.targetPosition = preyMovement.getRandomPosition();
-            preyMovement.speed = 7f;
+            Debug.Log("Escape from predator");
+            preyMovement.Move(preyMovement.getRandomPosition());
+            preyMovement.speed *= 2; ;
         }
-        */
     }
 
-    void OnCollisionEnter(Collision collision)
+
+    void OnTriggerExit(Collider other)
     {
-        /*
-        if(collision.gameObject.GetComponent<Predator>())
-        {
-            ResetPosition();
-        }
-        */
+        Predator predator = other.GetComponent<Predator>();
+
+        if (predator)
+            preyMovement.speed = 4f;
+
     }
 
     #endregion Unity Methods

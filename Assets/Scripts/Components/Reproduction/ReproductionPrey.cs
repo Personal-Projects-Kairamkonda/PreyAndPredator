@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class ReproductionPrey : Reproduction
 {
-
     void Awake()
     {
         childtransform = this.transform;

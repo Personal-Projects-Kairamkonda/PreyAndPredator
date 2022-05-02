@@ -5,17 +5,19 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class Radius : MonoBehaviour
 {
-    private LineRenderer circleRenderer;
+    public LineRenderer circleRenderer;
 
     [Range(1, 5)]
     public float triggerRadius = 4f;
+
+    public Color objColor;
 
     void Awake()
     {
         circleRenderer = this.GetComponent<LineRenderer>();
         circleRenderer.useWorldSpace = false;
         circleRenderer.widthMultiplier = 0.2f;
-        circleRenderer.material.color = Color.black;
+        circleRenderer.material.color = objColor;
     }
 
     // Start is called before the first frame update
