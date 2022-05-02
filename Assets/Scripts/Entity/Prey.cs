@@ -24,7 +24,7 @@ public class Prey : MonoBehaviour
 
         if (predator)
         {
-            Debug.Log("Escape from predator");
+            //Debug.Log("Escape from predator");
             preyMovement.Move(preyMovement.getRandomPosition());
             preyMovement.speed *= 2; ;
         }

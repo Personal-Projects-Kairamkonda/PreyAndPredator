@@ -25,6 +25,7 @@ public class Predator : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         Prey prey = other.GetComponent<Prey>();
+
         Predator predator = other.GetComponent<Predator>();
 
         if (prey)
@@ -48,7 +49,6 @@ public class Predator : MonoBehaviour
         */
     }
 
-    
     void OnCollisionEnter(Collision collision)
     {
         Prey prey = collision.gameObject.GetComponent<Prey>();
@@ -58,8 +58,6 @@ public class Predator : MonoBehaviour
             prey.ResetPosition();
         }
     }
-
-    
 
     void Evolve(float size,int speed)
     {
