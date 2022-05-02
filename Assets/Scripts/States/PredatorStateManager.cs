@@ -7,7 +7,7 @@ public class PredatorStateManager : MonoBehaviour
 {
     public ObjectMovement predMovement;
     public Radius predradius;
-    public GameObject predSize;
+    public Transform predSize;
     public Text dialougeText;
     public int predFatCount;
 
@@ -25,7 +25,7 @@ public class PredatorStateManager : MonoBehaviour
         dialougeText = this.GetComponent<Text>();
         predMovement = this.GetComponent<ObjectMovement>();
         predradius = this.GetComponent<Radius>();
-        predSize = this.transform.GetChild(0).gameObject;
+        predSize = this.transform.GetChild(0).gameObject.transform;
     }
 
     void Start()
@@ -58,11 +58,13 @@ public class PredatorStateManager : MonoBehaviour
 
     void OnTriggerStay(Collider otherObject)
     {
+        if(otherObject!=null)
         currentState.OnTriggerStay(this, otherObject);
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        if(collision!=null)
         currentState.OnCollisionEnter(this, collision);
     }
 

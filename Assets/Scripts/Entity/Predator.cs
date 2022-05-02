@@ -6,6 +6,7 @@ public class Predator : MonoBehaviour
 {
     private ObjectMovement predMovement;
     private Radius predRadius;
+    public GameObject predSize;
 
     void Awake()
     {
@@ -15,6 +16,7 @@ public class Predator : MonoBehaviour
         SphereCollider triggerCollider = gameObject.AddComponent<SphereCollider>();
         triggerCollider.radius = 4;
         triggerCollider.isTrigger = true;
+        predSize= this.transform.GetChild(0).gameObject;
     }
 
     void Start()

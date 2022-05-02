@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14aac5d972a9a4cfb8f5cdd2ba717994, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  predSize: {fileID: 0}
 --- !u!114 &5877618232680803428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,10 +177,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb3617d06534489887d63cc893149f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  predMovement: {fileID: 0}
+  predradius: {fileID: 0}
+  predSize: {fileID: 0}
   dialougeText: {fileID: 0}
-  collidedWithPrey: 0
-  iamFat: 0
-  iamBack: 0
+  predFatCount: 0
 --- !u!33 &9124804467515164454
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -277,7 +279,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 6910fa842817446288179bc11cd375ab, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
