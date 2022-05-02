@@ -9,6 +9,7 @@ public class PredatorIdleState : PredatorBaseState
         Debug.Log(predator.currentState);
         message = "I am hungry searching for food";
 
+        predator.PredResetData();
     }
 
     public override void UpdateState(PredatorStateManager predator)

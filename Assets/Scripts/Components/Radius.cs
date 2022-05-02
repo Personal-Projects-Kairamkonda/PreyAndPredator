@@ -26,7 +26,7 @@ public class Radius : MonoBehaviour
         DrawCircle(130, triggerRadius);
     }
 
-    private void DrawCircle(int steps, float radius)
+    public void DrawCircle(int steps, float radius)
     {
         circleRenderer.positionCount = steps;
 

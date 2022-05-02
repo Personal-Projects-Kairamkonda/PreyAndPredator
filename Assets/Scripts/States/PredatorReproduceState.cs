@@ -9,12 +9,18 @@ public class PredatorReproduceState : PredatorBaseState
         Debug.Log(predator.currentState);
 
         message = "I am inevitable";
+        predator.predMovement.speed = 0f;
     }
-
 
     public override void UpdateState(PredatorStateManager predator)
     {
-        message = "I am hunting again Baby!";
+        predator.predradius.triggerRadius -= 0.1f * Time.deltaTime;
+        predator.predradius.DrawCircle(130, predator.predradius.triggerRadius);
+
+        if(predator.predradius.triggerRadius<2)
+        {
+            predator.SwitchState(predator.predatorIdleState);
+        }
     }
 
     public override void OnTriggerStay(PredatorStateManager predator,Collider other)

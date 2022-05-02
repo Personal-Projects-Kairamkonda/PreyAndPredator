@@ -5,28 +5,26 @@ using UnityEngine.UI;
 
 public class PredatorStateManager : MonoBehaviour
 {
+    public ObjectMovement predMovement;
+    public Radius predradius;
+    public GameObject predSize;
     public Text dialougeText;
-
-    public bool collidedWithPrey=false;
-    public bool iamFat = false;
-    public bool iamBack = false;
-
     public int predFatCount;
 
     public PredatorBaseState currentState;
 
+    // Predator States
     public PredatorIdleState predatorIdleState = new PredatorIdleState();
     public PredatorEvolveState predatorEvolveState = new PredatorEvolveState();
     public PredatorDeathState predatorDeathState = new PredatorDeathState();
     public PredatorReproduceState predatorReproduceState = new PredatorReproduceState();
 
-    public ObjectMovement predMovement;
-    public GameObject predSize;
 
     void Awake()
     {
         dialougeText = this.GetComponent<Text>();
         predMovement = this.GetComponent<ObjectMovement>();
+        predradius = this.GetComponent<Radius>();
         predSize = this.transform.GetChild(0).gameObject;
     }
 
@@ -40,9 +38,9 @@ public class PredatorStateManager : MonoBehaviour
     {
         currentState.UpdateState(this);
 
-        if (dialougeText!=null)
+        if (dialougeText != null)
         {
-          UpdateDialougeText();
+            UpdateDialougeText();
         }
     }
 
@@ -68,11 +66,22 @@ public class PredatorStateManager : MonoBehaviour
         currentState.OnCollisionEnter(this, collision);
     }
 
-    public  void predIncrementSize()
+    public void predIncrementSize()
     {
         float x = predSize.transform.localScale.x + 0.5f;
-        float z= predSize.transform.localScale.z + 0.5f;
+        float z = predSize.transform.localScale.z + 0.5f;
 
-        predSize.transform.localScale= new Vector3(x, 0, z);
+        predSize.transform.localScale = new Vector3(x, 0, z);
     }
+
+    public void PredResetData()
+    {
+        predSize.transform.localScale = new Vector3(1, 0, 1);
+        this.transform.position = new Vector3(17, 0.5f, -10);
+        predradius.triggerRadius = 4;
+        predradius.DrawCircle(130, predradius.triggerRadius);
+        predMovement.speed = 3f;
+        predFatCount = 0;
+    }
+
 }
