@@ -12,11 +12,6 @@ public class Predator : MonoBehaviour
     {
         predMovement = this.GetComponent<ObjectMovement>();
         predRadius = this.GetComponent<Radius>();
-
-        SphereCollider triggerCollider = gameObject.AddComponent<SphereCollider>();
-        triggerCollider.radius = 4;
-        triggerCollider.isTrigger = true;
-        predSize= this.transform.GetChild(0).gameObject;
     }
 
     void Start()
@@ -47,7 +42,6 @@ public class Predator : MonoBehaviour
 
     }
 
-
     void OnCollisionEnter(Collision collision)
     {
         Prey prey = collision.gameObject.GetComponent<Prey>();
@@ -60,9 +54,4 @@ public class Predator : MonoBehaviour
 
     */
 
-    void Evolve(float size,int speed)
-    {
-        transform.localScale = new Vector3(size, transform.localScale.y, size);
-        predMovement.speed = speed;
-    }
 }

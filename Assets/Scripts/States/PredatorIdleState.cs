@@ -19,20 +19,20 @@ public class PredatorIdleState : PredatorBaseState
 
     public override void OnTriggerStay(PredatorStateManager predator, Collider other)
     {
-        GameObject prey = other.gameObject;
+            GameObject prey = other.gameObject;
 
-        if (prey.GetComponent<Prey>())
-        {
-            predator.predMovement.Move(other.transform.position);
-            message = "Gotach! Prey, Chasing you";
-        }
+            if (prey.GetComponent<Prey>())
+            {
+                predator.predMovement.Move(other.transform.position);
+                message = "Gotach! Prey, Chasing you";
+            }
     }
 
     public override void OnCollisionEnter(PredatorStateManager predator, Collision collision)
     {
-        GameObject prey = collision.gameObject;
+        GameObject other = collision.gameObject;
 
-        if (prey.GetComponent<Prey>())
+        if (other.GetComponent<Prey>())
         {
             predator.SwitchState(predator.predatorEvolveState);
             collision.gameObject.GetComponent<Prey>().ResetPosition();

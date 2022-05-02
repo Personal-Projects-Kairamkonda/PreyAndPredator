@@ -30,8 +30,16 @@ public class PredatorStateManager : MonoBehaviour
 
     void Start()
     {
+        SphereCollider triggerCollider = gameObject.AddComponent<SphereCollider>();
+        triggerCollider.radius = 4;
+        triggerCollider.isTrigger = true;
+
+        BoxCollider collisionCollider = gameObject.AddComponent<BoxCollider>();
+
+
         currentState = predatorIdleState;
         currentState.EnterState(this);
+    
     }
 
     void Update()
@@ -39,9 +47,7 @@ public class PredatorStateManager : MonoBehaviour
         currentState.UpdateState(this);
 
         if (dialougeText != null)
-        {
             UpdateDialougeText();
-        }
     }
 
     public void SwitchState(PredatorBaseState state)
@@ -49,23 +55,21 @@ public class PredatorStateManager : MonoBehaviour
         currentState = state;
         currentState.EnterState(this);
     }
-
-    private void UpdateDialougeText()
-    {
-        //Debug.Log(currentState.message);
-        dialougeText.text = currentState.message;
-    }
-
+    
     void OnTriggerStay(Collider otherObject)
     {
-        if(otherObject!=null)
         currentState.OnTriggerStay(this, otherObject);
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision!=null)
         currentState.OnCollisionEnter(this, collision);
+    }
+
+    private void UpdateDialougeText()
+    {
+        //Debug.Log(currentState.message);
+        dialougeText.text = currentState.message;
     }
 
     public void predIncrementSize()
