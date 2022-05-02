@@ -19,4 +19,9 @@ public class PredatorReproduceState : PredatorBaseState
     {
 
     }
+
+    public override void OnCollisionEnter(PredatorStateManager predator, Collision collision)
+    {
+
+    }
 }

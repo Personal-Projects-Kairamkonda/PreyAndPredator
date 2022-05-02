@@ -11,7 +11,9 @@ public class PredatorStateManager : MonoBehaviour
     public bool iamFat = false;
     public bool iamBack = false;
 
-    PredatorBaseState currentState;
+    public int predFatCount;
+
+    public PredatorBaseState currentState;
 
     public PredatorIdleState predatorIdleState = new PredatorIdleState();
     public PredatorEvolveState predatorEvolveState = new PredatorEvolveState();
@@ -20,10 +22,10 @@ public class PredatorStateManager : MonoBehaviour
 
     public ObjectMovement predMovement;
 
-
     void Awake()
     {
         dialougeText = this.GetComponent<Text>();
+        predMovement = this.GetComponent<ObjectMovement>();
     }
 
     void Start()
@@ -50,8 +52,17 @@ public class PredatorStateManager : MonoBehaviour
 
     private void UpdateDialougeText()
     {
-        Debug.Log(currentState.message);
+        //Debug.Log(currentState.message);
         dialougeText.text = currentState.message;
     }
 
+    void OnTriggerStay(Collider otherObject)
+    {
+        currentState.OnTriggerStay(this, otherObject);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        currentState.OnCollisionEnter(this, collision);
+    }
 }

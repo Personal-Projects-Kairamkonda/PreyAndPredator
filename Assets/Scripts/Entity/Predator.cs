@@ -13,7 +13,7 @@ public class Predator : MonoBehaviour
         predRadius = this.GetComponent<Radius>();
 
         SphereCollider triggerCollider = gameObject.AddComponent<SphereCollider>();
-        triggerCollider.radius = predRadius.triggerRadius;
+        triggerCollider.radius = 4;
         triggerCollider.isTrigger = true;
     }
 
@@ -22,32 +22,29 @@ public class Predator : MonoBehaviour
         predMovement.speed = 3f;
     }
 
+    /*
     void OnTriggerStay(Collider other)
     {
+        /*
         Prey prey = other.GetComponent<Prey>();
-
-        Predator predator = other.GetComponent<Predator>();
 
         if (prey)
         {
-            //predMovement.speed = predMovement.speed / 2;
             predMovement.Move(other.transform.position);
-            predRadius.circleRenderer.material.color = Color.red;
         }
-        else
-        {
-            predRadius.circleRenderer.material.color = Color.black;
-            predMovement.speed = 3f;
-        }
-
+        */
+        
         /* This logic makes the predator messy with position when both are in the same trigger.
+
+        Predator predator = other.GetComponent<Predator>();
         if(predator)
         {
             predatorMovement.targetPosition = predatorMovement.getRandomPosition();
             predatorMovement.Move(predatorMovement.targetPosition);
         }
-        */
+
     }
+
 
     void OnCollisionEnter(Collision collision)
     {
@@ -58,6 +55,8 @@ public class Predator : MonoBehaviour
             prey.ResetPosition();
         }
     }
+
+    */
 
     void Evolve(float size,int speed)
     {

@@ -11,4 +11,6 @@ public abstract class PredatorBaseState
     public abstract void UpdateState(PredatorStateManager predator);
 
     public abstract void OnTriggerStay(PredatorStateManager predator, Collider other);
+
+    public abstract void OnCollisionEnter(PredatorStateManager predator, Collision collision);
 }
