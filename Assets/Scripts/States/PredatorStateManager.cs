@@ -21,11 +21,13 @@ public class PredatorStateManager : MonoBehaviour
     public PredatorReproduceState predatorReproduceState = new PredatorReproduceState();
 
     public ObjectMovement predMovement;
+    public GameObject predSize;
 
     void Awake()
     {
         dialougeText = this.GetComponent<Text>();
         predMovement = this.GetComponent<ObjectMovement>();
+        predSize = this.transform.GetChild(0).gameObject;
     }
 
     void Start()
@@ -64,5 +66,13 @@ public class PredatorStateManager : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         currentState.OnCollisionEnter(this, collision);
+    }
+
+    public  void predIncrementSize()
+    {
+        float x = predSize.transform.localScale.x + 0.5f;
+        float z= predSize.transform.localScale.z + 0.5f;
+
+        predSize.transform.localScale= new Vector3(x, 0, z);
     }
 }

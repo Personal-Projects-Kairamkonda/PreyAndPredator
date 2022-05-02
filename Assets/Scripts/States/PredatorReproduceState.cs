@@ -6,6 +6,8 @@ public class PredatorReproduceState : PredatorBaseState
 {
     public override void EnterState(PredatorStateManager predator)
     {
+        Debug.Log(predator.currentState);
+
         message = "I am inevitable";
     }
 

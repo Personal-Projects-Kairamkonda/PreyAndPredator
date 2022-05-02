@@ -6,14 +6,14 @@ public class PredatorIdleState : PredatorBaseState
 {
     public override void EnterState(PredatorStateManager predator)
     {
+        Debug.Log(predator.currentState);
         message = "I am hungry searching for food";
 
-        //message = "I am in idle state, started moving";
     }
 
     public override void UpdateState(PredatorStateManager predator)
     {
-        //message = "I am hungry searching for food";
+
     }
 
     public override void OnTriggerStay(PredatorStateManager predator, Collider other)
@@ -35,6 +35,7 @@ public class PredatorIdleState : PredatorBaseState
         {
             predator.SwitchState(predator.predatorEvolveState);
             collision.gameObject.GetComponent<Prey>().ResetPosition();
+            predator.predIncrementSize();
         }
     }
 }

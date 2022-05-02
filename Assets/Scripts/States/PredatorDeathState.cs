@@ -8,19 +8,14 @@ public class PredatorDeathState : PredatorBaseState
     {
         Debug.Log(predator.currentState);
 
-        //message = "I am dieing help me!";
         message = "I have eaten a lot of pries and I became fat";
 
         predator.predMovement.speed = 1f;
     }
 
-
     public override void UpdateState(PredatorStateManager predator)
     {
-        if (predator.iamBack)
-        {
-            message = " I will born again!!!!";
-        }
+        
     }
 
     public override void OnTriggerStay(PredatorStateManager predator, Collider other)
@@ -30,10 +25,9 @@ public class PredatorDeathState : PredatorBaseState
         if (prey.GetComponent<Prey>())
         {
             predator.predMovement.Move(other.transform.position);
-            message = "Prey, Chasing you!";
+            message = "Prey, Chasing you!, I can't move faster";
         }
     }
-
 
     public override void OnCollisionEnter(PredatorStateManager predator, Collision collision)
     {
