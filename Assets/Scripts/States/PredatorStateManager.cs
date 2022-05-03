@@ -36,7 +36,6 @@ public class PredatorStateManager : MonoBehaviour
 
         BoxCollider collisionCollider = gameObject.AddComponent<BoxCollider>();
 
-
         currentState = predatorIdleState;
         currentState.EnterState(this);
     

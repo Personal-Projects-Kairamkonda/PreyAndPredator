@@ -30,7 +30,6 @@ public class Prey : MonoBehaviour
         }
     }
 
-
     void OnTriggerExit(Collider other)
     {
         Predator predator = other.GetComponent<Predator>();

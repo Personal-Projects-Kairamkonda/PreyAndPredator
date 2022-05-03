@@ -29,7 +29,6 @@ public class ObjectMovement : MonoBehaviour
         Move(targetPosition);
     }
 
-
     //Move method
     public void Move(Vector3 targetPosition)
     {
@@ -41,7 +40,7 @@ public class ObjectMovement : MonoBehaviour
         transform.LookAt(target);
     }
 
-    //A mothed to get a random position on the map
+    //A method to get a random position on the map
     public Vector3 getRandomPosition()
     {
         //Create a random position
