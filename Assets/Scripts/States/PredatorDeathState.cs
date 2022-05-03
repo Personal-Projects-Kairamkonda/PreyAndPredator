@@ -35,7 +35,7 @@ public class PredatorDeathState : PredatorBaseState
 
         if (prey.GetComponent<Prey>())
         {
-            message = "I can't eat more pries";
+            message = "I can't eat any more pries";
             collision.gameObject.GetComponent<Prey>().ResetPosition();
             predator.SwitchState(predator.predatorReproduceState);
         }
