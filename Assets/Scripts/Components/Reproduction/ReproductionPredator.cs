@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,19 +14,18 @@ public class ReproductionPredator : Reproduction
 
     void Start()
     {
-        respawnPrey = true;
-        StartCoroutine(SpawnPrey());
+        StartCoroutine(SpawnGameObject(childCount));
     }
 
-    public override IEnumerator SpawnPrey()
+    public override IEnumerator SpawnGameObject(int getChildCount)
     {
-        yield return StartCoroutine(base.SpawnPrey());
+        yield return StartCoroutine(base.SpawnGameObject(getChildCount));
 
         for (int i = 0; i < transform.childCount; i++)
         {
             transform.GetChild(i).gameObject.GetComponent<PredatorStateManager>().dialougeText = this.dialougeText;
         }
 
-        StopCoroutine(SpawnPrey());
+        
     }
 }

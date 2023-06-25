@@ -699,7 +699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06cf30231096b4736b7a0196f82cb250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 9124804467515164449, guid: ad31dc7df639b4a2299674008b99ca36, type: 3}
+  spawnPrefab: {fileID: 0}
   respawnPrey: 1
   rangeX: 15
   rangeZ: 10
@@ -1191,7 +1191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc2cd71ebd5a4d8897cf8a14d4b8378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 637231582842722470, guid: a02d1ffb492c7497ead9de509f89dcac, type: 3}
+  spawnPrefab: {fileID: 637231582842722470, guid: a02d1ffb492c7497ead9de509f89dcac, type: 3}
   respawnPrey: 1
   rangeX: 15
   rangeZ: 10

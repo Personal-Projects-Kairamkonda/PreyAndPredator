@@ -1,24 +1,40 @@
-/* Class features
+/* ----------------------------------------------------------
+ * Class features
  * Spawing Prey - Completed
  * Keep count of objects in scene 
- */
+---------------------------------------------------------- */
 
 using System.Collections;
 using UnityEngine;
 
 public class Reproduction : MonoBehaviour
 {
+   protected void  Reproduction()
+    {
+        
+    }
+
     #region Properties
-    public GameObject prefab;
 
-    public bool respawnPrey;
+    /// <summary>
+    /// holds data spawn object
+    /// </summary>
+    public GameObject spawnPrefab;
 
+    /// <summary>
+    /// max border of x axis
+    /// </summary>
     public float rangeX=15f;
+
+    /// <summary>
+    /// max border of z axis
+    /// /// </summary>
     public float rangeZ=10f;
 
-    private int index;
-
-    protected Transform childtransform;
+    /// <summary>
+    /// Used to store gameobject index
+    /// </summary>
+    private int gameObjectIndex;
 
     /// <summary>
     /// Count of spawn entities.
@@ -28,40 +44,33 @@ public class Reproduction : MonoBehaviour
 
     #endregion Properties
 
-    #region  Unity Methods
-
-    void Update()
-    {
-        if (transform.childCount>childCount)
-        {
-            respawnPrey = false;
-        }
-    }
-
-    #endregion Unity Methods
-
     #region  Custom methods
 
     /// <summary>
-    /// Prey spawner 
+    /// Object spawner 
     /// </summary>
     /// <returns></returns>
-    public virtual IEnumerator SpawnPrey()
+    public virtual IEnumerator SpawnGameObject(int getChildCount)
     {
-        while (respawnPrey)
+        Debug.Log($"Current child count is {childCount}");
+
+        while (gameObjectIndex>getChildCount)
         {
-            GameObject temp = Instantiate(prefab, transform.position, transform.rotation);
+            GameObject temp = Instantiate(spawnPrefab, transform.position, transform.rotation);
             temp.transform.SetParent(this.transform);
-            temp.gameObject.name = prefab.name+"("+index++.ToString()+ ")";
+            temp.gameObject.name = $"{spawnPrefab.name} ({gameObjectIndex.ToString()}) ";
+               
+            gameObjectIndex++;
 
            ObjectMovement tempObjectMovement=temp.GetComponent<ObjectMovement>();
 
            tempObjectMovement.rangeX= this.rangeX;
-           tempObjectMovement .rangeZ= this.rangeZ;
+           tempObjectMovement.rangeZ= this.rangeZ;
            tempObjectMovement.targetPosition = tempObjectMovement.getRandomPosition();
 
             yield return new WaitForSeconds(1f);
         }
     }
+
     #endregion Custom methods
 }

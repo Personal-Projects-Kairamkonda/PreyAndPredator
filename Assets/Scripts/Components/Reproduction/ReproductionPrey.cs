@@ -1,28 +1,37 @@
-/*Child class of Reproduction
+/*-----------------------------------------------------------
+ * Child class of Reproduction
  * It handles extra features to the preys
- */
+---------------------------------------------------------- */
 
 using System.Collections;
-using UnityEngine;
 
+/// <summary>
+/// Child base of reproduction which uses properties and methods
+/// </summary>
 public class ReproductionPrey : Reproduction
 {
+     
+
+    #region Unity methods
+
     void Awake()
     {
-        childtransform = this.transform;
         childCount = 3;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
-        respawnPrey = true;
-        StartCoroutine(SpawnPrey());
+        StartCoroutine(SpawnGameObject(childCount));
     }
 
-    public override IEnumerator SpawnPrey()
+    #endregion Unity methods
+
+    #region Override methods
+
+    public override IEnumerator SpawnGameObject(int getChildCount)
     {
-        yield return StartCoroutine(base.SpawnPrey());
+        yield return StartCoroutine(base.SpawnGameObject(getChildCount));
     }
 
+    #endregion Override methods
 }
