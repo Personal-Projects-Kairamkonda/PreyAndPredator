@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class ReproductionPredator : Reproduction
 {
+    [Tooltip("Dialouge text for the predator")]
     public Text dialougeText;
 
     void Awake()
     {
-        childCount = 1;
+        childCount = 0;
     }
 
     void Start()
@@ -26,5 +27,7 @@ public class ReproductionPredator : Reproduction
         {
             transform.GetChild(i).gameObject.GetComponent<PredatorStateManager>().dialougeText = this.dialougeText;
         }
+
+        StopCoroutine(SpawnPrey());
     }
 }

@@ -1,13 +1,14 @@
-using System.Collections;
-using UnityEngine;
-
 /* Class features
  * Spawing Prey - Completed
  * Keep count of objects in scene 
  */
 
+using System.Collections;
+using UnityEngine;
+
 public class Reproduction : MonoBehaviour
 {
+    #region Properties
     public GameObject prefab;
 
     public bool respawnPrey;
@@ -18,7 +19,16 @@ public class Reproduction : MonoBehaviour
     private int index;
 
     protected Transform childtransform;
+
+    /// <summary>
+    /// Count of spawn entities.
+    /// </summary>
+    /// <returns> value</returns>
     protected int childCount;
+
+    #endregion Properties
+
+    #region  Unity Methods
 
     void Update()
     {
@@ -28,6 +38,14 @@ public class Reproduction : MonoBehaviour
         }
     }
 
+    #endregion Unity Methods
+
+    #region  Custom methods
+
+    /// <summary>
+    /// Prey spawner 
+    /// </summary>
+    /// <returns></returns>
     public virtual IEnumerator SpawnPrey()
     {
         while (respawnPrey)
@@ -45,5 +63,5 @@ public class Reproduction : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
     }
-    
+    #endregion Custom methods
 }
