@@ -11,27 +11,22 @@ using System.Collections;
 public class ReproductionPrey : Reproduction
 {
      
-
     #region Unity methods
 
     void Awake()
     {
-        childCount = 3;
+        
     }
 
     void Start()
     {
-        StartCoroutine(SpawnGameObject(childCount));
+        InitiateSpawn();
     }
 
     #endregion Unity methods
 
     #region Override methods
 
-    public override IEnumerator SpawnGameObject(int getChildCount)
-    {
-        yield return StartCoroutine(base.SpawnGameObject(getChildCount));
-    }
 
     #endregion Override methods
 }

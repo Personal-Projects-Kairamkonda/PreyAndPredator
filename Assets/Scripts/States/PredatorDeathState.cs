@@ -10,7 +10,7 @@ public class PredatorDeathState : PredatorBaseState
 
         message = "I have eaten a lot of pries and I became fat";
 
-        predator.predMovement.speed = 1f;
+        //predator.predMovement.speed = 1f;
     }
 
     public override void UpdateState(PredatorStateManager predator)

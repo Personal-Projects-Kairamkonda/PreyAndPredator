@@ -9,11 +9,6 @@ using UnityEngine;
 
 public class Reproduction : MonoBehaviour
 {
-   protected void  Reproduction()
-    {
-        
-    }
-
     #region Properties
 
     /// <summary>
@@ -22,55 +17,82 @@ public class Reproduction : MonoBehaviour
     public GameObject spawnPrefab;
 
     /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField]
+    protected SpawnRange GetSpawnRange;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [SerializeField]
+    protected SpawnValues GetSpawnValues;
+
+    #endregion Properties
+
+    #region Unity methods
+
+    private void Awake()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            InitiateSpawn();
+        }
+    }
+
+    #endregion
+
+    #region  Custom methods
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public virtual void InitiateSpawn()
+    {
+        SpawnObject(spawnPrefab, transform);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="spawnPrefab"></param>
+    /// <param name="transform"></param>
+    public void SpawnObject(GameObject spawnPrefab, Transform transform)
+    {
+        GameObject temp = Instantiate(spawnPrefab, transform.position, transform.rotation);
+        temp.transform.SetParent(this.transform);
+        temp.gameObject.name = $"{spawnPrefab.name} ({GetSpawnValues.gameObjectIndex}) ";
+    }
+
+    #endregion Custom methods
+}
+
+[System.Serializable]
+public class SpawnRange
+{
+    /// <summary>
     /// max border of x axis
     /// </summary>
-    public float rangeX=15f;
+    public float rangeX = 15f;
 
     /// <summary>
     /// max border of z axis
     /// /// </summary>
-    public float rangeZ=10f;
+    public float rangeZ = 10f;
+}
 
+
+[System.Serializable]
+public class SpawnValues
+{
     /// <summary>
     /// Used to store gameobject index
     /// </summary>
-    private int gameObjectIndex;
+    public int gameObjectIndex;
 
     /// <summary>
     /// Count of spawn entities.
     /// </summary>
     /// <returns> value</returns>
-    protected int childCount;
-
-    #endregion Properties
-
-    #region  Custom methods
-
-    /// <summary>
-    /// Object spawner 
-    /// </summary>
-    /// <returns></returns>
-    public virtual IEnumerator SpawnGameObject(int getChildCount)
-    {
-        Debug.Log($"Current child count is {childCount}");
-
-        while (gameObjectIndex>getChildCount)
-        {
-            GameObject temp = Instantiate(spawnPrefab, transform.position, transform.rotation);
-            temp.transform.SetParent(this.transform);
-            temp.gameObject.name = $"{spawnPrefab.name} ({gameObjectIndex.ToString()}) ";
-               
-            gameObjectIndex++;
-
-           ObjectMovement tempObjectMovement=temp.GetComponent<ObjectMovement>();
-
-           tempObjectMovement.rangeX= this.rangeX;
-           tempObjectMovement.rangeZ= this.rangeZ;
-           tempObjectMovement.targetPosition = tempObjectMovement.getRandomPosition();
-
-            yield return new WaitForSeconds(1f);
-        }
-    }
-
-    #endregion Custom methods
+    public int childCount;
 }

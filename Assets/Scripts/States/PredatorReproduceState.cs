@@ -9,7 +9,7 @@ public class PredatorReproduceState : PredatorBaseState
         Debug.Log(predator.currentState);
 
         message = "I am inevitable";
-        predator.predMovement.speed = 0f;
+        //predator.predMovement.speed = 0f;
     }
 
     public override void UpdateState(PredatorStateManager predator)

@@ -85,7 +85,7 @@ public class PredatorStateManager : MonoBehaviour
         this.transform.position = new Vector3(17, 0.5f, -10);
         predradius.triggerRadius = 4;
         predradius.DrawCircle(130, predradius.triggerRadius);
-        predMovement.speed = 3f;
+        //predMovement.speed = 3f;
         predFatCount = 0;
     }
 

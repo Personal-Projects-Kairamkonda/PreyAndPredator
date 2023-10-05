@@ -16,7 +16,7 @@ public class Predator : MonoBehaviour
 
     void Start()
     {
-        predMovement.speed = 3f;
+        //predMovement.speed = 3f;
     }
 
     /*

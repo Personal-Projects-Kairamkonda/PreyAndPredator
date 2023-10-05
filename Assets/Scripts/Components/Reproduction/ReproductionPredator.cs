@@ -9,23 +9,13 @@ public class ReproductionPredator : Reproduction
 
     void Awake()
     {
-        childCount = 0;
+        //childCount = 0;
     }
 
     void Start()
     {
-        StartCoroutine(SpawnGameObject(childCount));
+        //StartCoroutine(SpawnGameObject(childCount));
     }
 
-    public override IEnumerator SpawnGameObject(int getChildCount)
-    {
-        yield return StartCoroutine(base.SpawnGameObject(getChildCount));
-
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            transform.GetChild(i).gameObject.GetComponent<PredatorStateManager>().dialougeText = this.dialougeText;
-        }
-
-        
-    }
+   
 }

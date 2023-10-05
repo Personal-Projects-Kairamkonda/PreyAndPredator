@@ -13,7 +13,7 @@ public class Prey : MonoBehaviour
     }
     void Start()
     {
-        preyMovement.speed = 4f;
+        //preyMovement.speed = 4f;
     }
 
     #region Unity Methods
@@ -26,7 +26,7 @@ public class Prey : MonoBehaviour
         {
             //Debug.Log("Escape from predator");
             preyMovement.Move(preyMovement.getRandomPosition());
-            preyMovement.speed *= 2; ;
+            //preyMovement.speed *= 2; ;
         }
     }
 
@@ -34,8 +34,8 @@ public class Prey : MonoBehaviour
     {
         Predator predator = other.GetComponent<Predator>();
 
-        if (predator)
-            preyMovement.speed = 4f;
+        if (predator) { }
+            //preyMovement.speed = 4f;
 
     }
 
@@ -44,6 +44,6 @@ public class Prey : MonoBehaviour
     public void ResetPosition()
     {
         transform.position = new Vector3(-17, 0.5f, 10f);
-        preyMovement.speed = 5f;
+        //preyMovement.speed = 5f;
     }
 }
