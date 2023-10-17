@@ -709,10 +709,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06cf30231096b4736b7a0196f82cb250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD:Assets/Scenes/Main.unity
   spawnPrefab: {fileID: 837943974}
   GetSpawnRange:
     rangeX: 15
     rangeZ: 10
+=======
+  prefab: {fileID: 9124804467515164449, guid: ad31dc7df639b4a2299674008b99ca36, type: 3}
+  respawnPrey: 1
+  rangeX: 15
+  rangeZ: 10
+>>>>>>> parent of b95239a (working constructor inhertance):Assets/Art/Scenes/Main.unity
   dialougeText: {fileID: 149284473}
 --- !u!23 &837943977
 MeshRenderer:
@@ -1266,6 +1273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dc2cd71ebd5a4d8897cf8a14d4b8378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD:Assets/Scenes/Main.unity
   spawnPrefab: {fileID: 637231582842722470, guid: a02d1ffb492c7497ead9de509f89dcac, type: 3}
   GetSpawnRange:
     rangeX: 15
@@ -1278,3 +1286,9 @@ SceneRoots:
   - {fileID: 2110417346}
   - {fileID: 837943979}
   - {fileID: 1297341622}
+=======
+  prefab: {fileID: 637231582842722470, guid: a02d1ffb492c7497ead9de509f89dcac, type: 3}
+  respawnPrey: 1
+  rangeX: 15
+  rangeZ: 10
+>>>>>>> parent of b95239a (working constructor inhertance):Assets/Art/Scenes/Main.unity
